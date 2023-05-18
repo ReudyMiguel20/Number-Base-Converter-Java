@@ -16,18 +16,18 @@ public class UserInterface {
         boolean userWantToExit = false;
 
         while (!userWantToExit) {
-            System.out.println("Do you want to convert /from decimal or /to decimal? (To quit type /exit)");
-            switch (scanner.nextLine()) {
-                case "/from" -> {
-                    this.np.convertDecimalToAnything();
-                }
-                case "/to" -> {
-                    this.np.anythingToDecimal();
-                }
-                case "/exit" -> {
-                    userWantToExit = true;
-                }
+            System.out.println("Enter two numbers in format: {source base} {target base} (To quit type /exit)");
+            String baseNumber = scanner.nextLine();
+
+            if (baseNumber.equals("/exit")) {
+                break;
             }
+
+            String[] splitter = baseNumber.split(" ");
+            String firstBase = splitter[0];
+            String secondBase = splitter[1];
+            this.np.rememberBaseConverter(firstBase, secondBase);
+
         }
     }
 }
